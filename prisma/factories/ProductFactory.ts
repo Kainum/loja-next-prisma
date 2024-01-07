@@ -1,11 +1,12 @@
 import { faker } from '@faker-js/faker';
+import { Product } from '../models/Product';
 
 export class ProductFactory {
     
-    static makeOne (category_id: number = 1): {
-        name: string, description: string, price: number, stock: number, url: string, category: {},
-    }
-    {
+    static create (category_id: number = 1): Product {
+
+        const _number = require('lodash/number');
+
         const name = faker.commerce.productName();
         const url = name.toLowerCase().replaceAll(' ', '-');
 
@@ -13,7 +14,7 @@ export class ProductFactory {
             name,
             description: faker.commerce.productDescription(),
             price: parseFloat(faker.commerce.price()),
-            stock: 100,
+            stock: _number.random(200),
             url,
             category: {
                 connect: {

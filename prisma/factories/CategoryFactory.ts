@@ -1,11 +1,9 @@
 import { faker } from '@faker-js/faker';
+import { Category } from '../models/Category';
 
 export class CategoryFactory {
     
-    static makeOne (): {
-        name: string, url: string
-    }
-    {
+    static create (): Category {
         const name = faker.commerce.department();
         const url = name.toLowerCase().replaceAll(' ', '-');
 

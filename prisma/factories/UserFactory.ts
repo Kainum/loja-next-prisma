@@ -1,11 +1,9 @@
 import { faker } from '@faker-js/faker';
+import { User } from '../models/User';
 
 export class UserFactory {
     
-    static makeOne (): {
-        name: string, email: string, password: string
-    }
-    {
+    static create (): User {
         const obj = {
             name: faker.person.fullName(),
             email: faker.internet.email(),
