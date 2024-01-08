@@ -6,9 +6,9 @@ import { OrderSeeder } from './seeders/OrderSeeder';
 
 async function main () {
     await UserSeeder.seed(10);
-    await CategorySeeder.seed(5);
-    await ProductSeeder.seed(15);
-    await OrderSeeder.seed(4);
+    await CategorySeeder.seed(8);
+    await ProductSeeder.seed(45);
+    await OrderSeeder.seed(10);
 }
 
 main();
