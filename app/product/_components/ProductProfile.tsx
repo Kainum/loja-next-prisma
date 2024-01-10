@@ -10,7 +10,9 @@ const ProductProfile = ({name, price} : {
         <div>
             <h1 className="text-4xl text-zinc-800 font-semibold mb-8">{name}</h1>
             <div className=" flex justify-between">
-                <div className="size-96 bg-green-800"></div>
+                <div className="size-96">
+                    <img className="object-cover size-full" src="https://i.pinimg.com/736x/28/be/5e/28be5e9288570ccf68dee3c213534d19.jpg" alt="product image" />
+                </div>
                 <div className="flex flex-col gap-6">
                     <p className="text-yellow-secondary">
                         <i className="fa-solid fa-star"></i>

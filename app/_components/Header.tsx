@@ -1,11 +1,17 @@
+import { getServerSession } from "next-auth";
 import Strip from "./Strip";
+import Link from "next/link";
 
-const Header = () => {
+const Header = async () => {
+
+    const session = await getServerSession();
+    const user = session?.user;
+
     return (
         <header className='bg-red-primary text-white px-32'>
             <div className='flex'>
                 {/* <img src="" alt="" /> */}
-                <div className='w-48 h-40 bg-blue-500 flex justify-center items-center'>Logo</div>
+                <div className='w-48 h-40 flex justify-center items-center font-bold font-mono text-2xl'>Loja Next</div>
                 <div className='flex-1'>
                     <nav className='flex justify-between'>
                         <div className='flex space-x-6'>
@@ -34,8 +40,18 @@ const Header = () => {
                         </form>
                         <div className='flex w-96 justify-between'>
                             <p className='text-sm'>
-                                <span className='font-bold block'>Bem-vindo :)</span>
-                                <span>Entre ou cadastre-se</span>
+                                <span className='font-bold block'>
+                                    {user ?
+                                    <>Olá, {user.name}</> :
+                                    <>Bem-vindo :)</>}
+                                </span>
+                                <span>
+                                    {user ?
+                                    <>Fazer <Link className="font-semibold" href='/api/auth/signout'>Logout</Link></> :
+                                    <>
+                                    <Link className="font-semibold" href='/api/auth/signin'>Entre</Link> ou <Link className="font-semibold" href='#'>cadastre-se</Link>
+                                    </>}
+                                </span>
                             </p>
                             <i className="fa-solid fa-heart text-4xl"></i>
                             <i className="fa-solid fa-basket-shopping text-5xl relative">
