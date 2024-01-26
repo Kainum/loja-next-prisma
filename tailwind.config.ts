@@ -15,6 +15,13 @@ const config: Config = {
 				'yellow-secondary': "#FCD000",
 				'green-primary': "#59C00B",
 				'green-secondary': "#479908",
+				'blue-primary': "#0086FF",
+				'blue-secondary': "#0468C3",
+				
+				
+				
+				'theme-primary': "#0086FF",
+				'theme-secondary': "#0468C3",
 			},
 		},
 	},

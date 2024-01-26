@@ -19,7 +19,7 @@ export default function RootLayout({
 			<Script src="https://kit.fontawesome.com/3696b778f5.js" crossOrigin="anonymous"></Script>
 			<body className='h-screen flex flex-col justify-between'>
 				<Header></Header>
-				<main className='px-32 flex-1 pb-16 pt-6'>
+				<main className='px-48 flex-1 pb-16 pt-6'>
 					{children}
 				</main>
 				<Footer></Footer>

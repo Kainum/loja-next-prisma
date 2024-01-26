@@ -2,7 +2,7 @@ import Strip from "./Strip";
 
 const Footer = () => {
     return (
-        <footer className='bg-red-primary text-white px-32'>
+        <footer className='bg-theme-primary text-white px-48'>
             <Strip></Strip>
             <div className="py-16">
                 <div className='mx-32 flex flex-col gap-2'>

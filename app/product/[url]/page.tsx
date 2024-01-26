@@ -1,7 +1,9 @@
 import { PrismaClient } from "@prisma/client";
 import ProductProfile from "../_components/ProductProfile";
 import ProductInfo from "../_components/ProductInfo";
-import ProductCard from "../_components/ProductCard";
+import ProductCard from "../../_components/ProductCard";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
 const ProductPage = async function ({params} : {params: {url: string}}) {
 
@@ -14,24 +16,21 @@ const ProductPage = async function ({params} : {params: {url: string}}) {
         }
     });
 
-    prisma.$disconnect();
-
     if (!product) {
-        return (
-            <>
-            </>
-        );
+        return notFound();
     }
 
-    const other_products = [
-        product,
-        product,
-        product,
-        product,
-        product,
-        product,
-        product,
-    ]
+    const other_products = await prisma.product.findMany({
+        where: {
+            category_id: product.category_id,
+            NOT: {
+                id: product.id,
+            }
+        },
+        take: 7,
+    });
+
+    prisma.$disconnect();
 
     return (
         <div className="flex flex-col gap-4 font-semibold text-zinc-800">
@@ -43,7 +42,9 @@ const ProductPage = async function ({params} : {params: {url: string}}) {
             <ul className="flex gap-x-4 overflow-x-scroll snap-x snap-mandatory">
                 {other_products.map((item, index) => (
                     <li key={index} className="snap-center">
-                        <ProductCard name={item.name} price={item.price}></ProductCard>
+                        <Link href={`/product/${item.url}`}>
+                            <ProductCard name={item.name} price={item.price}></ProductCard>
+                        </Link>
                     </li>
                 ))}
             </ul>
