@@ -1,11 +1,9 @@
 import ProductCard from "@/app/_components/ProductCard";
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/prisma/client";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 const CategoryPage = async function ({params} : {params: {url: string}}) {
-
-    const prisma = new PrismaClient();
 
     const category = await prisma.category.findUnique({
         where: {
@@ -23,8 +21,6 @@ const CategoryPage = async function ({params} : {params: {url: string}}) {
         },
         take: 7,
     });
-
-    prisma.$disconnect();
 
     return (
         <ul className="flex flex-wrap gap-y-4 justify-between">

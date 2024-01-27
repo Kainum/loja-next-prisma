@@ -1,13 +1,11 @@
-import { PrismaClient } from "@prisma/client";
 import ProductProfile from "../_components/ProductProfile";
 import ProductInfo from "../_components/ProductInfo";
 import ProductCard from "../../_components/ProductCard";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { prisma } from "@/prisma/client";
 
 const ProductPage = async function ({params} : {params: {url: string}}) {
-
-    const prisma = new PrismaClient();
 
     const product = await prisma.product.findUnique({
         where: {
@@ -30,12 +28,10 @@ const ProductPage = async function ({params} : {params: {url: string}}) {
         take: 7,
     });
 
-    prisma.$disconnect();
-
     return (
         <div className="flex flex-col gap-4 font-semibold text-zinc-800">
 
-            <ProductProfile name={product.name} price={product.price}></ProductProfile>
+            <ProductProfile name={product.name} price={product.price} id={product.id}></ProductProfile>
 
             <h3 className="text-3xl mt-10">👍 Outros Produtos</h3>
 

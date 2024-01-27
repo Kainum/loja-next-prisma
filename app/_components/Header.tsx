@@ -1,29 +1,23 @@
 import { getServerSession } from "next-auth";
 import Strip from "./Strip";
 import Link from "next/link";
-import { OrderStatus, PrismaClient } from "@prisma/client";
+import { OrderStatus } from "@prisma/client";
+import { GetCurrentUserID } from "../api/auth/UserManager";
+import { prisma } from "@/prisma/client";
 
 const Header = async () => {
-
     const session = await getServerSession();
     const user = session?.user;
 
-    const prisma = new PrismaClient();
     const navigationDeps = await prisma.category.findMany({
         take: 5,
     })
-
-    let cart_count = 0;
-    if (user) {
-        const {id: user_id} = await prisma.user.findFirstOrThrow({
-            where: {
-                email: user.email?.toString()
-            },
-            select: {
-                id: true
-            }
-        })
     
+    let cart_count = 0;
+
+    const user_id = await GetCurrentUserID();
+    
+    if (user_id) {
         const items_count = (await prisma.order.findFirst({
             where: {
                 user_id: user_id,
@@ -37,8 +31,6 @@ const Header = async () => {
         if (items_count)
             cart_count = items_count;
     }
-
-    prisma.$disconnect();
 
     return (
         <header className='bg-theme-primary text-white'>
