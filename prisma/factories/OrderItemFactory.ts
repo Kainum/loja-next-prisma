@@ -11,7 +11,7 @@ export class OrderItemFactory {
         const obj : OrderItem = {
             item_price: price,
             quantity,
-            total_price: price * quantity,
+            // total_price: price * quantity,
             product: {
                 connect: {
                     id: product_id,

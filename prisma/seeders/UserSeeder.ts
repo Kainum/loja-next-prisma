@@ -1,7 +1,7 @@
 import { Seeder } from './Seeder';
 import { User } from '../models/User';
 import { UserFactory } from '../factories/UserFactory';
-import { prisma } from '../client';
+import prisma from '../client';
 
 export class UserSeeder extends Seeder {
     

@@ -9,6 +9,7 @@ export class ProductFactory {
 
         const name = faker.commerce.productName();
         const url = name.toLowerCase().replaceAll(' ', '-');
+        const image = '';
 
         const obj = {
             name,
@@ -16,6 +17,7 @@ export class ProductFactory {
             price: parseFloat(faker.commerce.price()),
             stock: _number.random(200),
             url,
+            image,
             category: {
                 connect: {
                     id: category_id,

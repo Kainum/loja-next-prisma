@@ -2,7 +2,7 @@ import { Seeder } from './Seeder';
 import { OrderItem } from '../models/OrderItem';
 import { OrderFactory } from '../factories/OrderFactory';
 import { OrderItemFactory } from '../factories/OrderItemFactory';
-import { prisma } from '../client';
+import prisma from '../client';
 
 export class OrderSeeder extends Seeder {
     

@@ -11,7 +11,7 @@ export class OrderFactory {
 
         let total_order : number = 0;
         items.forEach((item) => {
-            total_order += item.total_price;
+            total_order += item.item_price * item.quantity;
         });
 
         const obj = {

@@ -1,6 +1,7 @@
 import { money } from "@/utils/Util";
 import Link from "next/link";
 import ProductPictures from "./ProductPictures";
+import ProductAddButton from "./ProductAddButton";
 
 const ProductProfile = ({name, price, id} : {
     name: string,
@@ -35,31 +36,9 @@ const ProductProfile = ({name, price, id} : {
                         <p className="text-green-secondary">(10% de desconto)</p>
                         <p className="">ou R$ {money(price)} em 10x de R$ {money(price / 10)} sem juros</p>
                     </div>
-                    
-                    <form action="/api/cart" method="post">
-                        <input type="hidden" name="id" value={id} />
-                        <input type="hidden" name="qtd" value={1} />
-                        <input type="hidden" name="_method" value={'post'} />
-                        <button type="submit"
-                            className="relative w-96 text-white font-semibold text-xl py-4
-                            bg-green-primary hover:bg-green-secondary
-                            rounded">
-                            <i className="fa-solid fa-basket-shopping absolute left-4 top-5"></i>
-                            <span className="uppercase">Comprar agora</span>
-                        </button>
-                    </form>
-                    <form action="/api/cart" method="post">
-                        <input type="hidden" name="id" value={id} />
-                        <input type="hidden" name="qtd" value={1} />
-                        <input type="hidden" name="_method" value={'post'} />
-                        <button type="submit"
-                            className="relative w-96 text-white font-semibold text-xl py-4
-                            bg-green-primary hover:bg-green-secondary
-                            rounded">
-                            <i className="fa-solid fa-basket-shopping absolute left-4 top-5"></i>
-                            <span className="uppercase">Adicionar à sacola</span>
-                        </button>
-                    </form>
+
+                    <ProductAddButton id={id} quantity={1}><>Comprar agora</></ProductAddButton>
+                    <ProductAddButton id={id} quantity={1}><>Adicionar à sacola</></ProductAddButton>
                 </div>
             </div>
         </div>

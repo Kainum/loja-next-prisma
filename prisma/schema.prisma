@@ -44,6 +44,7 @@ model Product {
     price       Float
     stock       Int
     url         String @unique
+    image       String?
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -61,6 +62,7 @@ enum OrderStatus {
     PAYMENT
     SHIPPING
     COMPLETE
+    CANCELED
 }
 
 model Order {
@@ -84,7 +86,7 @@ model OrderItem {
     id          Int   @id @default(autoincrement())
     item_price  Float
     quantity    Int
-    total_price Float
+    // total_price Float
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt

@@ -1,7 +1,7 @@
 import { Seeder } from './Seeder';
 import { Category } from '../models/Category';
 import { CategoryFactory } from '../factories/CategoryFactory';
-import { prisma } from '../client';
+import prisma from '../client';
 
 export class CategorySeeder extends Seeder {
     

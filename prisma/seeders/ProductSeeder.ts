@@ -1,5 +1,5 @@
 import { Seeder } from './Seeder';
-import { prisma } from '../client';
+import prisma from '../client';
 import { ProductFactory } from '../factories/ProductFactory';
 
 export class ProductSeeder extends Seeder {

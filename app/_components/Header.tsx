@@ -46,7 +46,7 @@ const Header = async () => {
                 <div className='flex space-x-6'>
                     <span>atendimento</span>
                     <span>Compre pelo tel: 0800 000 0000</span>
-                    <span>Meus pedidos</span>
+                    <Link className="hover:underline" href={'/meus_pedidos'}>Meus pedidos</Link>
                 </div>
             </nav>
             <div className="px-48">
