@@ -1,4 +1,4 @@
-import { prisma } from "@/prisma/client";
+import prisma from "@/prisma/client";
 import { getServerSession } from "next-auth";
 
 export async function GetCurrentUserID () {

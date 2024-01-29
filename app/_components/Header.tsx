@@ -3,7 +3,7 @@ import Strip from "./Strip";
 import Link from "next/link";
 import { OrderStatus } from "@prisma/client";
 import { GetCurrentUserID } from "../api/auth/UserManager";
-import { prisma } from "@/prisma/client";
+import prisma from "@/prisma/client";
 
 const Header = async () => {
     const session = await getServerSession();

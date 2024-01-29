@@ -3,7 +3,7 @@ import ProductInfo from "../_components/ProductInfo";
 import ProductCard from "../../_components/ProductCard";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { prisma } from "@/prisma/client";
+import prisma from "@/prisma/client";
 
 const ProductPage = async function ({params} : {params: {url: string}}) {
 
